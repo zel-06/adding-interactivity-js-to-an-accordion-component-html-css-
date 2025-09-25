@@ -67,10 +67,32 @@
         max-height: 81px;
       }
       .accordion-content p { margin: 15px 0; }
+
+      .controls {
+        max-width: 600px;
+        margin: 0 auto 20px;
+        text-align: center;
+      }
+
+      .controls button {
+        margin: 5px;
+        padding: 10px 18px;
+        border: 2px solid rgb(255, 0, 0);
+        border-radius: 0;
+        cursor: pointer;
+        font-weight: 600;
+        background-color: white;
+        color: rgb(255, 0, 0);
+      }
     </style>
 
   </head>
   <body>
+     <div class="controls">
+      <button id="showAll">Show All</button>
+      <button id="hideAll">Hide All</button>
+    </div>
+
     <div class="accordion">
       <div class="accordion-item">
         <div class="accordion-header">Section 1</div>
@@ -101,6 +123,20 @@
             console.log(`Section ${i + 1} is closed`);
         }
       };
+    });
+      
+        document.getElementById("showAll").onclick = () =>
+        items.forEach((it, i) => {
+        it.classList.add("active");
+        it.querySelector(".accordion-content").style.maxHeight = "81px";
+        console.log(`Section ${i + 1} is active`);
+    });
+
+        document.getElementById("hideAll").onclick = () =>
+        items.forEach((it, i) => {
+        it.classList.remove("active");
+        it.querySelector(".accordion-content").style.maxHeight = "0";
+        console.log(`Section ${i + 1} is closed`);
     });
     </script>
   </body>
